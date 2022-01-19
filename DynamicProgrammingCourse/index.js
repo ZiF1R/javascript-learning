@@ -49,7 +49,7 @@ const howSum = (target, numbers, memo = {}) => {
 };
 
 const bestSum = (target, numbers, memo = {}) => {
-  // if (target in memo) return memo[target];
+  if (target in memo) return memo[target];
   if (target === 0) return [];
   if (target < 0) return null;
 
@@ -57,21 +57,15 @@ const bestSum = (target, numbers, memo = {}) => {
   for (let number of numbers) {
     let reminderResult = bestSum(target - number, numbers, memo);
     if (reminderResult !== null) {
-      if (bestResult === null) bestResult = reminderResult;
-      else bestResult = bestResult.length < reminderResult.length ? bestResult : reminderResult;
-      bestResult.push(number);
-      // memo[target] = bestResult;
+      let result = [ ...reminderResult, number ];
+      if (bestResult === null) bestResult = result;
+      else bestResult = bestResult.length > result.length ? result : bestResult;
+      memo[target] = bestResult;
     }
   }
 
   return bestResult;
 };
-
-// console.log(bestSum(7, [5, 3, 4, 7])); // [7]
-// console.log(bestSum(8, [2, 3, 5])); // [3, 5]
-// console.log(bestSum(8, [1, 4, 5])); // [4, 4]
-// console.log(bestSum(2, [5, 3, 4, 7])); // null
-// console.log(bestSum(100, [1, 2, 5, 25])); // [25, 25, 25, 25]
 
 module.exports = {
   fib,
