@@ -64,7 +64,33 @@ const bestSum = (target, numbers, memo = {}) => {
     }
   }
 
+  memo[target] = bestResult;
   return bestResult;
+};
+
+const canConstruct = (target, wordBank, memo = {}) => {
+  if (target in memo) return memo[target];
+  if (target === "") return true;
+
+  for (let word of wordBank) {
+    let startSequenceRegExp = new RegExp(`^${word}`);
+    let endSequenceRegExp = new RegExp(`${word}$`);
+    if (target.match(startSequenceRegExp)) {
+      let subString = target.replace(startSequenceRegExp, "");
+      let result = canConstruct(subString, wordBank);
+      if (result) return true;
+      memo[target] = result;
+    }
+    if (target.match(endSequenceRegExp)) {
+      let subString = target.replace(endSequenceRegExp, "");
+      let result = canConstruct(subString, wordBank);
+      if (result) return true;
+      memo[target] = result;
+    }
+  }
+  
+  memo[target] = false;
+  return false;
 };
 
 module.exports = {
@@ -72,5 +98,6 @@ module.exports = {
   uniquePaths,
   canSum,
   howSum,
-  bestSum
+  bestSum,
+  canConstruct
 }
