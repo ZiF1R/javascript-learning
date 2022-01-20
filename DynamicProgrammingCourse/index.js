@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {number} n - position of number in fibonacci sequence
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {number} n-th number of fibonacci sequience
+ */
 const fib = (n, memo = {}) => {
   if (n in memo) return memo[n];
   if (n <= 2) return 1;
@@ -5,6 +11,13 @@ const fib = (n, memo = {}) => {
   return memo[n];
 }
 
+/**
+ * 
+ * @param {number} m - number of columns
+ * @param {number} n - number of rows
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {number} count of ways to go to the bottom-right corner [m-1][n-1] from top-left corner [0][0] by moving only down or right
+ */
 const uniquePaths = (m, n, memo = {}) => {
   if (memo[[m, n]] || memo[[n, m]])
     return memo[[m, n]] ? memo[[m, n]] : memo[[n, m]];
@@ -17,6 +30,13 @@ const uniquePaths = (m, n, memo = {}) => {
   return memo[[m, n]];
 };
 
+/**
+ * 
+ * @param {number} target - not nagative number
+ * @param {array} numbers - array of numbers from which function try to get target by summarizing
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {array} if it possible to get the target from numbers array by summarizing returns true, otherwise returns false
+ */
 const canSum = (target, numbers, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === 0) return true;
@@ -33,6 +53,13 @@ const canSum = (target, numbers, memo = {}) => {
   return false;
 };
 
+/**
+ * 
+ * @param {number} target - not nagative number
+ * @param {array} numbers - array of numbers from which function try to get target by summarizing
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {array} if it possible to get the target from numbers array by summarizing returns one of the ways to get it, otherwise returns null
+ */
 const howSum = (target, numbers, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === 0) return [];
@@ -48,6 +75,13 @@ const howSum = (target, numbers, memo = {}) => {
   return null;
 };
 
+/**
+ * 
+ * @param {number} target - not nagative number
+ * @param {array} numbers - array of numbers from which function try to get target by summarizing
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {array} if it possible to get the target from numbers array by summarizing returns the shortest way to get it, otherwise returns null
+ */
 const bestSum = (target, numbers, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === 0) return [];
@@ -68,6 +102,13 @@ const bestSum = (target, numbers, memo = {}) => {
   return bestResult;
 };
 
+/**
+ * 
+ * @param {string} target - some word or group of words without spaces
+ * @param {array[string]} wordBank - array of some string sequences from which function try to construct the target
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {boolean} true if it possible to construct the target from the strings in wordBank, otherwise returns false
+ */
 const canConstruct = (target, wordBank, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === "") return true;
