@@ -61,8 +61,10 @@ describe("canConstruct", () => {
   test("should return true", () => {
     expect(canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])).toBeTruthy();
     expect(canConstruct("", ["cat", "dog", "mouse"])).toBeTruthy();
+    expect(canConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"])).toBeTruthy();
   });
   test("should return false", () => {
     expect(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toBeFalsy();
+    expect(canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toBeFalsy();
   });
 });
