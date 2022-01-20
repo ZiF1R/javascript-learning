@@ -114,19 +114,12 @@ const canConstruct = (target, wordBank, memo = {}) => {
   if (target === "") return true;
 
   for (let word of wordBank) {
-    let startSequenceRegExp = new RegExp(`^${word}`);
-    let endSequenceRegExp = new RegExp(`${word}$`);
-    if (target.match(startSequenceRegExp)) {
-      let subString = target.replace(startSequenceRegExp, "");
-      let result = canConstruct(subString, wordBank);
-      if (result) return true;
-      memo[target] = result;
-    }
-    if (target.match(endSequenceRegExp)) {
-      let subString = target.replace(endSequenceRegExp, "");
-      let result = canConstruct(subString, wordBank);
-      if (result) return true;
-      memo[target] = result;
+    if (target.indexOf(word) === 0) {
+      let result = canConstruct(target.slice(word.length), wordBank, memo);
+      if (result) {
+        memo[target] = result;
+        return true;
+      }
     }
   }
   
