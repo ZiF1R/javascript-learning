@@ -105,7 +105,7 @@ const bestSum = (target, numbers, memo = {}) => {
 /**
  * 
  * @param {string} target - some word or group of words without spaces
- * @param {array[string]} wordBank - array of some string sequences from which function try to construct the target
+ * @param {array[string]} wordBank - array of string from which function try to construct the target
  * @param {object} memo - object for memoization of calculations, for optimization the time complexity
  * @returns {boolean} true if it possible to construct the target from the strings in wordBank, otherwise returns false
  */
@@ -127,11 +127,35 @@ const canConstruct = (target, wordBank, memo = {}) => {
   return false;
 };
 
+/**
+ * 
+ * @param {string} target - some word or group of words without spaces
+ * @param {array[string]} wordBank - array of strings from which function try to construct the target
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {number} the number of ways we can construct the target from words in array
+ */
+const countConstruct = (target, wordBank, memo = {}) => {
+  if (target in memo) return memo[target];
+  if (target === "") return 1;
+
+  let count = 0;
+  for (let word of wordBank) {
+    if (target.indexOf(word) === 0) {
+      let result = countConstruct(target.slice(word.length), wordBank, memo);
+      count += result;
+    }
+  }
+
+  memo[target] = count;
+  return count;
+};
+
 module.exports = {
   fib,
   uniquePaths,
   canSum,
   howSum,
   bestSum,
-  canConstruct
+  canConstruct,
+  countConstruct
 }
