@@ -7,7 +7,8 @@ const {
   howSum,
   bestSum,
   canConstruct,
-  countConstruct
+  countConstruct,
+  allConstruct
 } = DynamicProgrammingFunctions;
 
 describe("fib", () => {
@@ -84,5 +85,24 @@ describe("countConstruct", () => {
     expect(countConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toBe(0);
     expect(countConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"])).toBe(4);
     expect(countConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toBe(0);
+  });
+});
+
+describe("allConstruct", () => {
+  test("should return all combinations", () => {
+    expect(allConstruct("purple", ["purp", "p", "ur", "le", "purpl"])).toEqual([
+      ["purp", "le"],
+      ["p", "ur", "p", "le"]
+    ]);
+    expect(allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"])).toEqual([
+      ["ab", "cd", "ef"],
+      ["ab", "c", "def"],
+      ["abc", "def"],
+      ["abcd", "ef"]
+    ]);
+  });
+  test("should return an empty array", () => {
+    expect(allConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toEqual([]);
+    expect(allConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toEqual([]);
   });
 });
