@@ -1,4 +1,4 @@
-const DynamicProgrammingFunctions = require("./index.js");
+const DynamicProgrammingFunctions = require("./memoization.js");
 
 const {
   fib,
