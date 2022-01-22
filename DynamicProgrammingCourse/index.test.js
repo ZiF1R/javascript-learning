@@ -1,6 +1,13 @@
 const DynamicProgrammingFunctions = require("./index.js");
 
-const { fib, uniquePaths, canSum, howSum, bestSum, canConstruct } = DynamicProgrammingFunctions;
+const {
+  fib,
+  uniquePaths,
+  canSum,
+  howSum,
+  bestSum,
+  canConstruct,
+  countConstruct } = DynamicProgrammingFunctions;
 
 describe("fib", () => {
   test("Numbers 1 to 10", () => {
@@ -66,5 +73,15 @@ describe("canConstruct", () => {
   test("should return false", () => {
     expect(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toBeFalsy();
     expect(canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toBeFalsy();
+  });
+});
+
+describe("countConstruct", () => {
+  test("basic tests", () => {
+    expect(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"])).toBe(2);
+    expect(canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])).toBe(1);
+    expect(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toBe(0);
+    expect(canConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"])).toBe(4);
+    expect(canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toBe(0);
   });
 });
