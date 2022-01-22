@@ -1,4 +1,4 @@
-const DynamicProgrammingFunctions = require("./memoization.js");
+const Memoization = require("./memoization.js");
 
 const {
   fib,
@@ -9,7 +9,7 @@ const {
   canConstruct,
   countConstruct,
   allConstruct
-} = DynamicProgrammingFunctions;
+} = Memoization;
 
 describe("fib", () => {
   test("Numbers 1 to 10", () => {
