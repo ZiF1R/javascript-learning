@@ -7,7 +7,8 @@ const {
   howSum,
   bestSum,
   canConstruct,
-  countConstruct } = DynamicProgrammingFunctions;
+  countConstruct
+} = DynamicProgrammingFunctions;
 
 describe("fib", () => {
   test("Numbers 1 to 10", () => {
@@ -79,9 +80,9 @@ describe("canConstruct", () => {
 describe("countConstruct", () => {
   test("basic tests", () => {
     expect(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"])).toBe(2);
-    expect(canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])).toBe(1);
-    expect(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toBe(0);
-    expect(canConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"])).toBe(4);
-    expect(canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toBe(0);
+    expect(countConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])).toBe(1);
+    expect(countConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toBe(0);
+    expect(countConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"])).toBe(4);
+    expect(countConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toBe(0);
   });
 });
