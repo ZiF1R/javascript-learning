@@ -104,7 +104,7 @@ const bestSum = (target, numbers, memo = {}) => {
 
 /**
  * 
- * @param {string} target - some word or group of words without spaces
+ * @param {string} target - word or group of words without spaces
  * @param {array[string]} wordBank - array of strings from which function try to construct the target
  * @param {object} memo - object for memoization of calculations, for optimization the time complexity
  * @returns {boolean} true if it possible to construct the target from the strings in wordBank, otherwise returns false
@@ -129,7 +129,7 @@ const canConstruct = (target, wordBank, memo = {}) => {
 
 /**
  * 
- * @param {string} target - some word or group of words without spaces
+ * @param {string} target - word or group of words without spaces
  * @param {array[string]} wordBank - array of strings from which function try to construct the target
  * @param {object} memo - object for memoization of calculations, for optimization the time complexity
  * @returns {number} the number of ways we can construct the target from words in array
@@ -150,6 +150,13 @@ const countConstruct = (target, wordBank, memo = {}) => {
   return count;
 };
 
+/**
+ * 
+ * @param {string} target - word or group of words without spaces
+ * @param {array[string]} wordBank - array of strings from which function try to construct the target
+ * @param {object} memo - object for memoization of calculations, for optimization the time complexity
+ * @returns {number} all ways how we can construct the target from words in array 
+ */
 const allConstruct = (target, wordBank, memo = {}) => {
   if (target in memo) return memo[target];
   if (target === "") return [[]];
@@ -162,7 +169,7 @@ const allConstruct = (target, wordBank, memo = {}) => {
       combinations = [ ...combinations, ...newCombination ];
     }
   }
-  
+
   memo[target] = combinations;
   return combinations;
 };
