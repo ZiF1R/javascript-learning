@@ -2,6 +2,7 @@ let Tabulation = require("./tabulation.js");
 
 let {
   fib,
+  gridTraveler,
 } = Tabulation;
 
 describe("fib", () => {
@@ -20,5 +21,15 @@ describe("fib", () => {
     expect(fib(78)).toBe(8944394323791464);
     expect(fib(89)).toBe(1779979416004714000);
     expect(fib(100)).toBe(354224848179262000000);
+  });
+});
+
+describe("gridTraveler", () => {
+  test("basic tests", () => {
+    expect(gridTraveler(3, 7)).toBe(28);
+    expect(gridTraveler(5, 9)).toBe(495);
+    expect(gridTraveler(6, 12)).toBe(4368);
+    expect(gridTraveler(7, 21)).toBe(230230);
+    expect(gridTraveler(18, 18)).toBe(2333606220);
   });
 });
