@@ -3,6 +3,7 @@ let Tabulation = require("./tabulation.js");
 let {
   fib,
   gridTraveler,
+  canSum,
 } = Tabulation;
 
 describe("fib", () => {
@@ -31,5 +32,14 @@ describe("gridTraveler", () => {
     expect(gridTraveler(6, 12)).toBe(4368);
     expect(gridTraveler(7, 21)).toBe(230230);
     expect(gridTraveler(18, 18)).toBe(2333606220);
+  });
+});
+
+describe("canSum", () => {
+  test("should return true", () => {
+    expect(canSum(7, [5, 3, 4, 7])).toBeTruthy();
+  });
+  test("should return false", () => {
+    expect(canSum(300, [7, 14])).toBeFalsy();
   });
 });
