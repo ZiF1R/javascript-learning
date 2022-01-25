@@ -15,6 +15,12 @@ const fib = (n) => {
   return fibonacciNumbersArray[n];
 };
 
+/**
+ * 
+ * @param {number} rows - number of rows
+ * @param {number} columns - number of columns
+ * @returns {number} count of ways to go to the bottom-right corner [m-1][n-1] from top-left corner [0][0] by moving only down or right
+ */
 const gridTraveler = (rows, columns) => {
   let grid = Array(rows + 1).fill(0).map(row => Array(columns + 1).fill(0));
 
@@ -28,7 +34,29 @@ const gridTraveler = (rows, columns) => {
   return grid[rows][columns];
 };
 
+/**
+ * 
+ * @param {number} target - not nagative number
+ * @param {array} numbers - array of numbers from which function try to get target by summarizing
+ * @returns {array} if it possible to get the target from numbers array by summarizing returns true, otherwise returns false
+ */
+const canSum = (target, numbers) => {
+  let table = Array(target + 1).fill(false);
+
+  table[0] = true;
+  for (let i = 0; i < target + 1; i++) {
+    if (table[i]) {
+      for (let j = 0; j < numbers.length; j++) {
+        if (i + numbers[j] < target + 1) table[i + numbers[j]] = true;
+      }
+    }
+  }
+
+  return table[target];
+};
+
 module.exports = {
   fib,
   gridTraveler,
+  canSum,
 };
