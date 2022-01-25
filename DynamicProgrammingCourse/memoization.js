@@ -155,7 +155,7 @@ const countConstruct = (target, wordBank, memo = {}) => {
  * @param {string} target - word or group of words without spaces
  * @param {array[string]} wordBank - array of strings from which function try to construct the target
  * @param {object} memo - object for memoization of calculations, for optimization the time complexity
- * @returns {number} all ways how we can construct the target from words in array 
+ * @returns {array} all ways how we can construct the target from words in array 
  */
 const allConstruct = (target, wordBank, memo = {}) => {
   if (target in memo) return memo[target];
