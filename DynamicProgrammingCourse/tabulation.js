@@ -55,6 +55,12 @@ const canSum = (target, numbers) => {
   return table[target];
 };
 
+/**
+ * 
+ * @param {number} target - not nagative number
+ * @param {array} numbers - array of numbers from which function try to get target by summarizing
+ * @returns {array} if it possible to get the target from numbers array by summarizing returns one of the ways to get it, otherwise returns null
+ */
 const howSum = (target, numbers) => {
   // in the worst case solution will be not bigger
   // than array of [target + 1] elements
@@ -73,18 +79,60 @@ const howSum = (target, numbers) => {
   return table[target];
 }
 
+/**
+ * 
+ * @param {number} target - not nagative number
+ * @param {array} numbers - array of numbers from which function try to get target by summarizing
+ * @returns {array} if it possible to get the target from numbers array by summarizing returns the shortest way to get it, otherwise returns null
+ */
 const bestSum = (target, numbers) => {
+  // in the worst case solution will be not bigger
+  // than array of [target + 1] elements
+  let table = Array(target + 1).fill(null);
 
+  table[0] = [];
+  for (let i = 0; i < target + 1; i++) {
+    if (table[i] != null) {
+      for (let j = 0; j < numbers.length; j++) {
+        let k = i + numbers[j];
+        let newWay = [ ...table[i], numbers[j] ];
+        if (!Array.isArray(table[k])) table[k] = newWay;
+        else {
+          table[k] = table[k].length > newWay.length ? newWay : table[k];
+        }
+      }
+    }
+  }
+
+  return table[target];
 }
 
+/**
+ * 
+ * @param {string} target - word or group of words without spaces
+ * @param {array[string]} wordBank - array of strings from which function try to construct the target
+ * @returns {boolean} true if it possible to construct the target from the strings in wordBank, otherwise returns false
+ */
 const canConstruct = (target, numbers) => {
 
 }
 
+/**
+ * 
+ * @param {string} target - word or group of words without spaces
+ * @param {array[string]} wordBank - array of strings from which function try to construct the target
+ * @returns {number} the number of ways we can construct the target from words in array
+ */
 const countConstruct = (target, numbers) => {
 
 }
 
+/**
+ * 
+ * @param {string} target - word or group of words without spaces
+ * @param {array[string]} wordBank - array of strings from which function try to construct the target
+ * @returns {array} all ways how we can construct the target from words in array 
+ */
 const allConstruct = (target, numbers) => {
 
 }
