@@ -55,8 +55,47 @@ const canSum = (target, numbers) => {
   return table[target];
 };
 
+const howSum = (target, numbers) => {
+  // in the worst case solution will be not bigger
+  // than array of [target + 1] elements
+  let table = Array(target + 1).fill(null);
+
+  table[0] = [];
+  for (let i = 0; i < target + 1; i++) {
+    if (table[i] != null) {
+      for (let j = 0; j < numbers.length; j++) {
+        let k = i + numbers[j];
+        table[k] = [ ...table[i], numbers[j] ];
+      }
+    }
+  }
+
+  return table[target];
+}
+
+const bestSum = (target, numbers) => {
+
+}
+
+const canConstruct = (target, numbers) => {
+
+}
+
+const countConstruct = (target, numbers) => {
+
+}
+
+const allConstruct = (target, numbers) => {
+
+}
+
 module.exports = {
   fib,
   gridTraveler,
   canSum,
+  howSum,
+  bestSum,
+  canConstruct,
+  countConstruct,
+  allConstruct
 };
