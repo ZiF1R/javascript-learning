@@ -95,14 +95,14 @@ describe("allConstruct", () => {
       ["p", "ur", "p", "le"]
     ]);
     expect(allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"])).toEqual([
-      ["ab", "cd", "ef"],
-      ["ab", "c", "def"],
       ["abc", "def"],
-      ["abcd", "ef"]
+      ["ab", "c", "def"],
+      ["abcd", "ef"],
+      ["ab", "cd", "ef"]
     ]);
   });
   test("should return an empty array", () => {
     expect(allConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])).toEqual([]);
-    expect(allConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toEqual([]);
+    expect(allConstruct("eeeeeeeef", ["e", "ee", "eee", "eeee", "eeeee", "eeeeee"])).toEqual([]);
   });
 });
