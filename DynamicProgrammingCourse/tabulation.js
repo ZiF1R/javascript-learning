@@ -137,7 +137,20 @@ const canConstruct = (target, wordBank) => {
  * @returns {number} the number of ways we can construct the target from words in array
  */
 const countConstruct = (target, wordBank) => {
+  let table = Array(target.length + 1).fill(0);
 
+  table[0] = 1;
+  for (let i = 0; i < target.length + 1; i++) {
+    if (table[i] != 0) {
+      for (let word of wordBank) {
+        if (target.slice(i, i + word.length) === word) {
+          table[i + word.length] += table[i];
+        }
+      }
+    }
+  }
+
+  return table[target.length];
 }
 
 /**
