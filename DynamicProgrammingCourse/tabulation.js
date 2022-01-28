@@ -160,7 +160,21 @@ const countConstruct = (target, wordBank) => {
  * @returns {array} all ways how we can construct the target from words in array 
  */
 const allConstruct = (target, wordBank) => {
+  let table = Array(target.length + 1).fill().map(arr => Array());
 
+  table[0].push([]);
+  for (let i = 0; i < target.length + 1; i++) {
+    if (table[i].length > 0) {
+      for (let word of wordBank) {
+        if (target.slice(i, i + word.length) === word) {
+          let newCombination = table[i].map(arr => [...arr, word]);
+          table[i + word.length].push(...newCombination);
+        }
+      }
+    }
+  }
+
+  return table[target.length];
 }
 
 module.exports = {
