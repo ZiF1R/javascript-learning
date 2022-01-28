@@ -24,7 +24,7 @@ const fib = (n) => {
 const gridTraveler = (rows, columns) => {
   let grid = Array(rows + 1).fill(0).map(row => Array(columns + 1).fill(0));
 
-  if (rows > 0 && columns > 0) grid[1][1] = 1;
+  grid[1][1] = 1;
   for (let i = 0; i < rows + 1; i++)
     for (let j = 0; j < columns + 1; j++) {
       if (i < rows) grid[i+1][j] += grid[i][j];
@@ -113,8 +113,21 @@ const bestSum = (target, numbers) => {
  * @param {array[string]} wordBank - array of strings from which function try to construct the target
  * @returns {boolean} true if it possible to construct the target from the strings in wordBank, otherwise returns false
  */
-const canConstruct = (target, numbers) => {
+const canConstruct = (target, wordBank) => {
+  let table = Array(target.length + 1).fill(false);
 
+  table[0] = true;
+  for (let i = 0; i < target.length + 1; i++) {
+    if (table[i]) {
+      for (let word of wordBank) {
+        if (target.slice(i, i + word.length) === word) {
+          table[i + word.length] = true;
+        }
+      }
+    }
+  }
+
+  return table[target.length];
 }
 
 /**
@@ -123,7 +136,7 @@ const canConstruct = (target, numbers) => {
  * @param {array[string]} wordBank - array of strings from which function try to construct the target
  * @returns {number} the number of ways we can construct the target from words in array
  */
-const countConstruct = (target, numbers) => {
+const countConstruct = (target, wordBank) => {
 
 }
 
@@ -133,7 +146,7 @@ const countConstruct = (target, numbers) => {
  * @param {array[string]} wordBank - array of strings from which function try to construct the target
  * @returns {array} all ways how we can construct the target from words in array 
  */
-const allConstruct = (target, numbers) => {
+const allConstruct = (target, wordBank) => {
 
 }
 
